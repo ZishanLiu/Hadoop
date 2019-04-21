@@ -1,0 +1,3 @@
+pig -x local -param INPUT=testFile.txt -param OUTPUT=output -f Wordcount.pig 
+
+I put testFile.txt and pig file in the same folder in virtual machine

@@ -1,0 +1,5 @@
+pig -x local -param INPUT=tempInput.txt -param OUTPUT=output -f Max.pig
+pig -x local -param INPUT=tempInput.txt -param OUTPUT=output -f Min.pig
+pig -x local -param INPUT=tempInput.txt -param OUTPUT=output -f Avg.pig
+
+I put tempInput.txt and pig files in the same folder in virtual machine
