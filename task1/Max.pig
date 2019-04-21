@@ -1,4 +1,5 @@
 records = LOAD '$INPUT' using PigStorage('\t') AS (year:chararray, temperature:int, quality:int);
-temp = GROUP records by temperature;
-max = FOREACH temp GENERATE group, MAX(records.temperature) as MaxTemp;
-STORE max into '$OUTPUT' using PigStorage(',');
+frecords = FILTER records by temperature!=9999 and (quality == 0 OR quality == 1);
+grecords = GROUP frecords by year;
+temp = FOREACH grecords GENERATE group, MAX(frecords.temperature) as MaxTemp;
+STORE temp into '$OUTPUT' using PigStorage(',');
