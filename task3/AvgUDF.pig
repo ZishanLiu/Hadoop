@@ -1,4 +1,4 @@
-REGISTER 'hdfs:///tmp/input/pigUdf.jar';
+REGISTER 'IsGoodQuality.jar';
 DEFINE checkQuality edu.rosehulman.liuz6.IsGoodQuality();
 records = LOAD '$INPUT' using PigStorage('\t') AS (year:chararray, temperature:int, quality:int);
 frecords = FILTER records by temperature!=9999 and checkQuality(quality);
