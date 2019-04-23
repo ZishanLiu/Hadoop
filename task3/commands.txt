@@ -1,5 +1,8 @@
-pig -x local -param INPUT=tempInput.txt -param OUTPUT=output -f MaxUDF.pig
-pig -x local -param INPUT=tempInput.txt -param OUTPUT=output -f MinUDF.pig
-pig -x local -param INPUT=tempInput.txt -param OUTPUT=output -f AvgUDF.pig
+put jar into hdfs:
+hdfs dfs -put IsGoodQuality.jar /tmp/input/
 
-I put tempInput.txt and pig files in the same folder in virtual machine.
+run pig:
+pig -param INPUT=tempInput.txt -param OUTPUT=output -f MaxUDF.pig
+pig -param INPUT=tempInput.txt -param OUTPUT=output -f MinUDF.pig
+pig -param INPUT=tempInput.txt -param OUTPUT=output -f AvgUDF.pig
+
