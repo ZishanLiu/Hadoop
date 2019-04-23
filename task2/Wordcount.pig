@@ -1,4 +1,4 @@
-register 'Upper.jar';
+register 'hdfs://tmp/input/Upper.jar';
 DEFINE Upper edu.rosehulman.liuz6.Upper();
 lines = LOAD '$INPUT' AS (line:chararray);
 words = FOREACH lines GENERATE FLATTEN(TOKENIZE(line)) as word;
