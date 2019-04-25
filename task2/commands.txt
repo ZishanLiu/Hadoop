@@ -1,3 +1,6 @@
-pig -x local -param INPUT=testFile.txt -param OUTPUT=output -f Wordcount.pig 
+put jar into hdfs:
+hdfs dfs -put Upper.jar /tmp/input/
 
-I put testFile.txt and pig file in the same folder in virtual machine
+run pig:
+pig -param INPUT=testFile.txt -param OUTPUT=output -f Wordcount.pig 
+
