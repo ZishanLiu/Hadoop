@@ -1,6 +1,0 @@
-put jar into hdfs:
-hdfs dfs -put Upper.jar /tmp/input/
-
-run pig:
-pig -param INPUT=testFile.txt -param OUTPUT=output -f Wordcount.pig 
-

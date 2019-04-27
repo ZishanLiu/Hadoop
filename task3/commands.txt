@@ -1,8 +1,0 @@
-put jar into hdfs:
-hdfs dfs -put IsGoodQuality.jar /tmp/input/
-
-run pig:
-pig -param INPUT=tempInput.txt -param OUTPUT=output -f MaxUDF.pig
-pig -param INPUT=tempInput.txt -param OUTPUT=output -f MinUDF.pig
-pig -param INPUT=tempInput.txt -param OUTPUT=output -f AvgUDF.pig
-
