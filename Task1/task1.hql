@@ -1,4 +1,4 @@
-create database ${hiveconf:databaseName};
+create database IF NOT EXISTS ${hiveconf:databaseName};
 
 CREATE TABLE IF NOT EXISTS ${hiveconf:tableName}
 (
