@@ -6,7 +6,7 @@ CREATE FUNCTION toStrip AS 'edu.rosehulman.liuz6.Strip' USING JAR 'hdfs:///user/
 
 CREATE DATABASE IF NOT EXISTS ${hivevar:databaseName};
 USE ${hivevar:databaseName};
-CREATE TABLE IF NOT EXISTS ${hivevar:tableName}(line string) Stored as Textfile;
+CREATE TABLE IF NOT EXISTS ${hivevar:tableName}(line string) STORED AS TEXTFILE;
 LOAD DATA INPATH '${hivevar:inputLocation}' OVERWRITE INTO TABLE ${hivevar:tableName};
 
 select explode(split(toStrip(toUpper(word)) , "\\s")), count(word) from ${hivevar:tableName};
