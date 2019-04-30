@@ -12,9 +12,9 @@ LOAD DATA INPATH '${hivevar:eceEmployeesLocation}' INTO Table RoseStaticEmployee
 
 CREATE TABLE IF NOT EXISTS RoseDynamicEmployees(firstName string,lastName string,pos string,eid int) Partitioned by (dept string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS orc;
 Set hive.exec.dynamic.partition.mode=nonstrict;
-insert into table RoseDynamicEmployees partition(dept) select firstName, lastName, pos, eid from RoseStaticEmployees;
-insert into table RoseDynamicEmployees partition(dept) select firstName, lastName, pos, eid from RoseStaticEmployees;
-insert into table RoseDynamicEmployees partition(dept) select firstName, lastName, pos, eid from RoseStaticEmployees;
+insert into table RoseDynamicEmployees partition(dept) select firstName, lastName, pos, eid, dept from RoseStaticEmployees;
+insert into table RoseDynamicEmployees partition(dept) select firstName, lastName, pos, eid, dept from RoseStaticEmployees;
+insert into table RoseDynamicEmployees partition(dept) select firstName, lastName, pos, eid, dept from RoseStaticEmployees;
 
 CREATE TABLE IF NOT EXISTS RoseStaticEmployeesORC(firstName string,lastName string,pos string,eid int) Partitioned by (dept string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS orc;
 insert into table RoseStaticEmployeesORC partition(dept='admin') select firstName, lastName, pos, eid from RoseEmployees where dept='admin';
