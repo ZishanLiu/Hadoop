@@ -1,4 +1,4 @@
-ADD JAR 'hdfs:///user/root/hiveFunction.jar';
+ADD JAR hdfs:///user/root/hiveFunction.jar;
 DROP FUNCTION IF EXISTS toUpper;
 DROP FUNCTION IF EXISTS strip;
 
