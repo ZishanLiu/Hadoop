@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS ${hivevar:databaseName};
-USE ${hivevar:databaseName};
+CREATE DATABASE IF NOT EXISTS ${hivevar:databaseName}
+USE ${hivevar:databaseName}
 CREATE TABLE RoseEmployees(firstName string,lastName string,pos string,eid int)
 
 LOAD DATA INPATH '${hivevar:allEmployeesLocation}' OVERWRITE INTO TABLE RoseEmployees ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE
