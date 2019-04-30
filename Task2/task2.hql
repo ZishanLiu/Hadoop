@@ -7,7 +7,7 @@ CREATE FUNCTION toStrip AS 'edu.rosehulman.liuz6.Strip' USING JAR 'hdfs:///user/
 
 CREATE DATABASE IF NOT EXISTS ${hivevar:databaseName};
 USE ${hivevar:databaseName};
-CREATE TABLE ${hivevar:tableName1} (line string);
+CREATE TABLE ${hivevar:tableName1}(line string);
 LOAD DATA INPATH '${hivevar:inputLocation}' OVERWRITE INTO TABLE ${hivevar:tableName1};
 
 CREATE TABLE ${hivevar:tableName2}(word string)
