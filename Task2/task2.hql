@@ -3,12 +3,12 @@ DROP FUNCTION IF EXISTS Strip;
 CREATE FUNCTION Upper AS 'edu.rosehulman.liuz6.Upper' USING JAR 'hdfs:///tmp/input/hiveFunction.jar';
 CREATE FUNCTION Strip AS 'edu.rosehulman.liuz6.Strip' USING JAR 'hdfs:///tmp/input/hiveFunction.jar';
 
-create database liuz6;
+create database ${hivevar:databaseName};
 
-CREATE TABLE docs (line STRING);
-LOAD DATA INPATH 'testFile.txt' OVERWRITE INTO TABLE docs;
+CREATE TABLE ${hivevar:tableName1} (line STRING);
+LOAD DATA INPATH '${hivevar:inputLocation}' OVERWRITE INTO TABLE ${hivevar:tableName1};
 
-CREATE TABLE words(word string)
-insert into table words select explode(split(word , "\\s")) from docs;
-select word, count(word) from words group by word;
+CREATE TABLE ${hivevar:tableName2}(word string)
+insert into table ${hivevar:tableName2} select explode(split(word , "\\s")) from ${hivevar:tableName1};
+select word, count(word) from ${hivevar:tableName2} group by word;
 
