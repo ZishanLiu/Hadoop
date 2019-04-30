@@ -2,8 +2,8 @@
 
 CREATE DATABASE IF NOT EXISTS ${hivevar:databaseName};
 USE ${hivevar:databaseName};
-DROP FUNCTION IF EXISTS toUpper;
-DROP FUNCTION IF EXISTS toStrip;
+DROP FUNCTION toUpper;
+DROP FUNCTION toStrip;
 CREATE FUNCTION toUpper AS 'edu.rosehulman.liuz6.Upper' USING JAR 'hdfs:///user/root/hiveFunction.jar';
 CREATE FUNCTION toStrip AS 'edu.rosehulman.liuz6.Strip' USING JAR 'hdfs:///user/root/hiveFunction.jar';
 CREATE TABLE IF NOT EXISTS ${hivevar:tableName1} (line string) STORED AS TEXTFILE;
