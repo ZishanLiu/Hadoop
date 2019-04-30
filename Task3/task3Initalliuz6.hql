@@ -6,9 +6,9 @@ LOAD DATA INPATH '${hivevar:allEmployeesLocation}' OVERWRITE INTO TABLE RoseEmpl
 
 CREATE TABLE RoseStaticEmployees(firstName string,lastName string,pos string,eid int) Partitioned by (dept string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
 
-LOAD DATA INPATH ${hivevar:adminEmployeesLocation} INTO Table RoseStaticEmployees Partition(dept = 'admin');
-LOAD DATA INPATH ${hivevar:csseEmployeesLocation} INTO Table RoseStaticEmployees Partition(dept = 'csse');
-LOAD DATA INPATH ${hivevar:eceEmployeesLocation} INTO Table RoseStaticEmployees Partition(dept = 'ece');
+LOAD DATA INPATH '${hivevar:adminEmployeesLocation}' INTO Table RoseStaticEmployees Partition(dept = 'admin');
+LOAD DATA INPATH '${hivevar:csseEmployeesLocation}' INTO Table RoseStaticEmployees Partition(dept = 'csse');
+LOAD DATA INPATH '${hivevar:eceEmployeesLocation}' INTO Table RoseStaticEmployees Partition(dept = 'ece');
 
 CREATE TABLE RoseDynamicEmployees(firstName string,lastName string,pos string,eid int) Partitioned by (dept string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS orc;
 insert into table RoseDynamicEmployees partition(dept='admin') select firstName, lastName, pos, eid from RoseStaticEmployees where dept='admin';
