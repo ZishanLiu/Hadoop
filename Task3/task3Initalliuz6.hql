@@ -30,5 +30,5 @@ show partitions RoseStaticEmployees
 show partitions RoseDynamicEmployees
 show partitions RoseStaticEmployeesORC
 
-CREATE TABLE RoseDynamicEmployeesManualAdd(firstName string,lastName string,pos string,eid int) Partitioned by (dept string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS orc
+CREATE TABLE RoseDynamicEmployeesManualAdd (firstName string,lastName string,pos string,eid int) Partitioned by (dept string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS orc
 
