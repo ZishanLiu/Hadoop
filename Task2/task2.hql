@@ -9,7 +9,7 @@ USE ${hivevar:databaseName};
 CREATE TABLE IF NOT EXISTS ${hivevar:tableName1}(line string) STORED AS TEXTFILE;
 LOAD DATA INPATH '${hivevar:inputLocation}' OVERWRITE INTO TABLE ${hivevar:tableName1};
 
-create table IF NOT EXISTS ${hivevar:tableName2}(word string);
+CREATE TABLE IF NOT EXISTS ${hivevar:tableName2}(word string) STORED AS TEXTFILE;
 insert into table ${hivevar:tableName2} select explode(split(line, " ")) as word from ${hivevar:tableName1};
 
 select word, count(*) from word.${hivevar:tableName2} group by word;
