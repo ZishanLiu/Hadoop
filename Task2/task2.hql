@@ -1,5 +1,8 @@
-CREATE FUNCTION Upper AS 'edu.rosehulman.liuz6.Upper' USING JAR 'hdfs:///user/root/hiveFunction.jar';
-CREATE FUNCTION Strip AS 'edu.rosehulman.liuz6.Strip' USING JAR 'hdfs:///user/root/hiveFunction.jar';
+DROP FUNCTION IF EXISTS upper;
+DROP FUNCTION IF EXISTS strip;
+
+CREATE FUNCTION upper AS 'edu.rosehulman.liuz6.Upper' USING JAR 'hdfs:///user/root/hiveFunction.jar';
+CREATE FUNCTION strip AS 'edu.rosehulman.liuz6.Strip' USING JAR 'hdfs:///user/root/hiveFunction.jar';
 
 CREATE DATABASE IF NOT EXISTS ${hivevar:databaseName};
 USE ${hivevar:databaseName};
