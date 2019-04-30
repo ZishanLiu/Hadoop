@@ -17,9 +17,9 @@ insert into table RoseDynamicEmployees partition(dept) select firstName, lastNam
 insert into table RoseDynamicEmployees partition(dept) select firstName, lastName, pos, eid, dept from RoseStaticEmployees;
 
 CREATE TABLE IF NOT EXISTS RoseStaticEmployeesORC(firstName string,lastName string,pos string,eid int) Partitioned by (dept string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS orc;
-insert into table RoseStaticEmployeesORC partition(dept='admin') select firstName, lastName, pos, eid from RoseEmployees having dept='admin';
-insert into table RoseStaticEmployeesORC partition(dept='csse') select firstName, lastName, pos, eid from RoseEmployees having dept='csse';
-insert into table RoseStaticEmployeesORC partition(dept='ece') select firstName, lastName, pos, eid from RoseEmployees having dept='ece';
+insert into table RoseStaticEmployeesORC partition(dept='admin') select firstName as a, lastName as b, pos as c, eid as d from RoseEmployees where dept='admin';
+insert into table RoseStaticEmployeesORC partition(dept='csse') select firstName as a, lastName as b, pos as c, eid as d from RoseEmployees where dept='csse';
+insert into table RoseStaticEmployeesORC partition(dept='ece') select firstName as a, lastName as b, pos as c, eid as d from RoseEmployees where dept='ece';
 
 select * from RoseEmployees;
 select * from RoseStaticEmployees;
