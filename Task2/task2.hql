@@ -10,6 +10,6 @@ CREATE TABLE ${hivevar:tableName1} (line string);
 LOAD DATA INPATH '${hivevar:inputLocation}' OVERWRITE INTO TABLE ${hivevar:tableName1};
 
 CREATE TABLE ${hivevar:tableName2}(word string)
-insert into table ${hivevar:tableName2} select explode(split(word , "\\s")) from ${hivevar:tableName1};
+insert into table ${hivevar:tableName2} select explode(split(strip(toUpper(word)) , "\\s")) from ${hivevar:tableName1};
 select word, count(word) from ${hivevar:tableName2} group by word;
 
