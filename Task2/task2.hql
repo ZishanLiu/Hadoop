@@ -11,5 +11,5 @@ LOAD DATA INPATH '${hivevar:inputLocation}' OVERWRITE INTO TABLE ${hivevar:table
 
 CREATE TABLE IF NOT EXISTS ${hivevar:tableName2}(word string) STORED AS TEXTFILE;
 insert into table ${hivevar:tableName2} select explode(split(line , "\\s")) from ${hivevar:tableName1};
-select word, count(word) from ${hivevar:tableName2} group by word;
+select toStrip(toUpper(word)), count(word) from ${hivevar:tableName2} group by word;
 
