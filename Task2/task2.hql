@@ -1,5 +1,3 @@
-DROP FUNCTION IF EXISTS Upper;
-DROP FUNCTION IF EXISTS Strip;
 CREATE FUNCTION Upper AS 'edu.rosehulman.liuz6.Upper' USING JAR 'hdfs:///tmp/input/hiveFunction.jar';
 CREATE FUNCTION Strip AS 'edu.rosehulman.liuz6.Strip' USING JAR 'hdfs:///tmp/input/hiveFunction.jar';
 
