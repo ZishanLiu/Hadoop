@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS ${hivevar:databaseName};
 USE ${hivevar:databaseName};
-CREATE TABLE IF NOT EXISTS RoseEmployees(firstName string,lastName string,pos string,eid int) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
+CREATE TABLE IF NOT EXISTS RoseEmployees(firstName string,lastName string,pos string,depart string, eid int) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
 
 LOAD DATA INPATH '${hivevar:allEmployeesLocation}' OVERWRITE INTO TABLE RoseEmployees;
 
@@ -17,9 +17,9 @@ insert into table RoseDynamicEmployees partition(dept) select firstName, lastNam
 insert into table RoseDynamicEmployees partition(dept) select firstName, lastName, pos, eid, dept from RoseStaticEmployees;
 
 CREATE TABLE IF NOT EXISTS RoseStaticEmployeesORC(firstName string,lastName string,pos string,eid int) Partitioned by (dept string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS orc;
-insert into table RoseStaticEmployeesORC partition(dept='admin') select firstName, lastName, pos, eid from RoseEmployees where dept='admin';
-insert into table RoseStaticEmployeesORC partition(dept='csse') select firstName, lastName, pos, eid from RoseEmployees where dept='csse';
-insert into table RoseStaticEmployeesORC partition(dept='ece') select firstName, lastName, pos, eid from RoseEmployees where dept='ece';
+insert into table RoseStaticEmployeesORC partition(dept='admin') select firstName, lastName, pos, depart, eid from RoseEmployees where dept='admin';
+insert into table RoseStaticEmployeesORC partition(dept='csse') select firstName, lastName, pos, depart, eid from RoseEmployees where dept='csse';
+insert into table RoseStaticEmployeesORC partition(dept='ece') select firstName, lastName, pos, depart, eid from RoseEmployees where dept='ece';
 
 select count(*) from RoseEmployees;
 select count(*) from RoseStaticEmployees;
