@@ -1,0 +1,1 @@
+beeline -u jdbc:hive2://10.128.0.2:10000 -n hive -p password --hivevar databaseName=lab6liuz6 --hivevar tableName1=data1 --hivevar tableName2=data2 --hivevar inputLocation=/user/root/testFile.txt -f task2.hql
