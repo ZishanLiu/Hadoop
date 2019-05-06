@@ -1,3 +1,0 @@
-hdfs dfs -put tempInput.txt /user/root/
-
-beeline -u jdbc:hive2://10.128.0.2:10000 -n hive -p password --hivevar databaseName=lab6liuz6 --hivevar tableName=temperature --hivevar inputLocation=/user/root/tempInput.txt -f task1.hql
