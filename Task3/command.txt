@@ -1,1 +1,3 @@
-bin/flume-ng agent -n $agent_name -c conf -f conf/flume-conf.properties.template
+flume-ng agent --conf-file /home/zisaanlau/Hadoop/Task3/task3hdfs.conf --name a1
+
+I use git to transfer my file from local to VM, and I put the git repo in /home/zisaanlau/
