@@ -32,7 +32,9 @@ public class TextInterceptor implements Interceptor {
 			if (newEventBody.contains("Adding STATUS_COMMAND for component")) {
 				return null;
 			}
-			newEventBody += InetAddress.getLocalHost().getHostName();
+			StringBuilder sb = new StringBuilder();
+			String hostName = InetAddress.getLocalHost().getHostName();
+			sb.append(hostName).append(eventBody);
 			Map<String, String> map = event.getHeaders();
 			String completeFileName = map.get("file");
 			fileName = completeFileName.split("_")[1];
@@ -40,8 +42,8 @@ public class TextInterceptor implements Interceptor {
 			// Use String builder to write the new Event.
 			StringBuilder builder = new StringBuilder();
 			builder.append(fileName).append(",").append(newEventBody);
-			Event e = EventBuilder.withBody(builder.toString(), Charset.forName("UTF-8"));
-			return e;
+			Event newEvent = EventBuilder.withBody(sb.toString(), Charset.forName("UTF-8"));
+			return newEvent;
 		} catch (Exception exp) {
 			return null;
 		}
