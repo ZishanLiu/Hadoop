@@ -8,7 +8,7 @@ fGrade = FILTER gradeRecord by score <= 90;
 
 temp =  JOIN fGrade by course, courseRecord by courseNumber;
 
-result = FOREACH temp GENERATE Concatenate(fGrade.fName, fGrade.lName), courseRecord.courseNumber, courseRecord.courseName, Convert(fGrade.score);
+result = FOREACH temp GENERATE Concatenate(fGrade::fName, fGrade::lName), courseRecord.courseNumber, courseRecord.courseName, Convert(fGrade::score);
 
 DUMP result;
 STORE result into '$pigOutput/$username' using PigStorage('\t');
