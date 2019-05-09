@@ -1,0 +1,1 @@
+pig -param gradeInput=/tmp/Exams/grades.txt -param courseInput=/tmp/Exams/courses.txt -param pigOutput=/tmp/Exams -param username=liuz6 exam.pig
