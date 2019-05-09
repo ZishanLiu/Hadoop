@@ -13,10 +13,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class TextInterceptor implements Interceptor {
+public class TimestampInterceptor implements Interceptor {
 
 	private String fileName;
-	private String timeStamp;
 
 	public void initialize() {
 		// no op
@@ -33,16 +32,15 @@ public class TextInterceptor implements Interceptor {
 			}
 			String newEventBody = eventBody.replaceAll("@.*?,", ",");
 
-			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			this.timeStamp = df.format(new Date());
-
 			Map<String, String> map = event.getHeaders();
 			String completeFileName = map.get("file");
 			fileName = completeFileName.split("_")[1];
 
-			// Use String builder to write the new Event.
+			long now = System.currentTimeMillis();
+			map.put("TimeStamp", Long.toString(now));
+
 			StringBuilder builder = new StringBuilder();
-			builder.append(this.timeStamp).append(fileName).append(",").append(newEventBody);
+			builder.append(Long.toString(now)).append(fileName).append(",").append(newEventBody);
 			Event newEvent = EventBuilder.withBody(builder.toString(), Charset.forName("UTF-8"));
 			return newEvent;
 		} catch (Exception exp) {
@@ -74,8 +72,8 @@ public class TextInterceptor implements Interceptor {
 
 	public static class Builder implements Interceptor.Builder {
 
-		public TextInterceptor build() {
-			return new TextInterceptor();
+		public TimestampInterceptor build() {
+			return new TimestampInterceptor();
 		}
 
 		public void configure(Context arg0) {
