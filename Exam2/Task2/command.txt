@@ -1,3 +1,3 @@
 hdfs dfs -put liuz6UDF.jar /tmp/Exams
-pig -param gradeInput=/tmp/Exams/grades.txt -param courseInput=/tmp/Exams/courses.txt -param pigOutput=/tmp/pigOutput -param username=liuz6 exam.pig
+pig -x mapreduce -param gradeInput=/tmp/Exams/grades.txt -param courseInput=/tmp/Exams/courses.txt -param pigOutput=/tmp/pigOutput -param username=liuz6 exam.pig
 hdfs dfs -cat /tmp/pigOutput/liuz6/part-v002-o000-r-00000
