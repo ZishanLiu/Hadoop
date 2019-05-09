@@ -18,4 +18,4 @@ use exam;
 select * from (select cno as cno, COUNT(cno) as count from examData where grade != 'D' GROUP BY cno) temp where temp.count >=2;
 
 Question 5:
-sudo -u hive sqoop export --connect jdbc:mysql://10.128.0.2:3306/exam --username root --hcatalog-database exam --hcatalog-table examData --hcatalog-partition-keys userName --hcatalog-partition-values liuz6 --table examData
+sudo -u hive sqoop export --connect jdbc:mysql://10.128.0.2:3306/exam --username root --hcatalog-database exam --hcatalog-table exam --hcatalog-partition-keys userName --hcatalog-partition-values liuz6 --table examData
