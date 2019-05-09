@@ -1,1 +1,0 @@
-sudo -u hive sqoop export --connect jdbc:mysql://10.128.0.2:3306/exam --username root --hcatalog-database exam --hcatalog-table examData --hcatalog-partition-keys userName --hcatalog-partition-values liuz6 --table examData

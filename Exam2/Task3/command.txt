@@ -1,3 +1,0 @@
-beeline -u jdbc:hive2://10.128.0.2:10000 -n hive -p password --hivevar databaseName=exam --hivevar tempTableName=tempTable --hivevar tableName=examData -f hiveCreate.hql
-
-beeline -u jdbc:hive2://10.128.0.2:10000 -n hive -p password --hivevar databaseName=exam --hivevar tempTableName=tempTable --hivevar tableName=examData -f hiveInsert.hql
